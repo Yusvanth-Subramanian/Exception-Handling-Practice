@@ -4,30 +4,20 @@ import java.io.IOException;
 
 public class Main {
     public static void show() {
-        //Handling Checked exceptions
-        FileReader reader = null;
+
+        FileReader file = null;
         try {
-            reader = new FileReader("file1.txt");
+            file = new FileReader("text.txt");
         }
         catch (FileNotFoundException e) {
-            System.out.println("The file doesn't exist");
+            System.out.println("The file not found");
         }
-        finally {  //To make the close() get executed in all cases
+        finally {
             try {
-                reader.close();
+                file.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-            //Handling Unchecked exceptions
-            finally {
-                try {
-                    int b = 0;
-                    int a = 10 / b;
-                } catch (ArithmeticException e) {
-                    System.out.println("Divide by zero error");
-                }
-            }
-
         }
 
     }
